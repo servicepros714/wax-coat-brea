@@ -2,14 +2,14 @@
  * Wax Coat Car Detailing — Brea | Cloudflare Worker
  * ------------------------------------------------------------------
  * Backend for the booking site. Talks to the SHARED D1 database
- * `detailing-bookings` (account austin80565). All reads/writes are
+ * `detailing-bookings-4ocky8996` (account 4ocky8996). All reads/writes are
  * scoped to this site's `source` tag so portfolio sites never collide.
  *
  * Dashboard setup (manual, no CLI):
- *   1. Create/deploy this Worker as:  wax-coat-detailing-worker-v2
+ *   1. Create/deploy this Worker as:  wax-coat-brea-v2-worker
  *   2. Settings → Variables → D1 database bindings:
  *        Variable name:  DB
- *        D1 database:    detailing-bookings
+ *        D1 database:    detailing-bookings-4ocky8996
  *   3. Settings → Variables → Secrets:
  *        STRIPE_SECRET_KEY = sk_live_...  (or sk_test_...)
  *

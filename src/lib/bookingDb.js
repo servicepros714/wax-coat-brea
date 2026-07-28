@@ -6,7 +6,7 @@
 
 import { SITE } from './site'
 
-const API = import.meta.env.VITE_API_URL // https://wax-coat-detailing-worker-v2.austin80565.workers.dev
+const API = import.meta.env.VITE_API_URL // https://wax-coat-brea-v2-worker.4ocky8996.workers.dev
 const SOURCE = SITE.source
 
 function url(path) {

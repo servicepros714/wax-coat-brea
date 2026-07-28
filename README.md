@@ -2,7 +2,7 @@
 
 Booking website for **Wax Coat Car Detailing** (Brea, CA). Built on the Service Pros
 stack: Vite + React 18, React Router, Stripe, Cloudflare Pages + a Cloudflare Worker
-writing to the shared `detailing-bookings` D1 database.
+writing to the shared `detailing-bookings-4ocky8996` D1 database (account 4ocky8996).
 
 Aesthetic: **Liquid Chrome / Hydro-Gloss** — cool white + chrome silver + electric aqua,
 pulled from the logo. Deliberately different from every other site in the portfolio
@@ -17,7 +17,7 @@ chrome-framed before/after slider).
 |---|---|
 | `source` tag | `wax-coat-brea` |
 | Booking ID prefix | `WCB-` |
-| Worker URL | `https://wax-coat-detailing-worker-v2.austin80565.workers.dev` |
+| Worker URL | `https://wax-coat-brea-v2-worker.4ocky8996.workers.dev` |
 
 ---
 
@@ -37,7 +37,7 @@ stored until the Worker is live.
 ## 2. Front-end env — `.env.local` (committed on purpose)
 
 ```
-VITE_API_URL=https://wax-coat-detailing-worker-v2.austin80565.workers.dev
+VITE_API_URL=https://wax-coat-brea-v2-worker.4ocky8996.workers.dev
 VITE_STRIPE_PUBLISHABLE_KEY=pk_test_or_pk_live_your_key
 ```
 
@@ -48,11 +48,11 @@ key switches checkout from demo mode to live Stripe (Card + Apple Pay / Google P
 
 ## 3. Deploy the Worker (Cloudflare dashboard — no CLI)
 
-1. Workers & Pages -> Create -> Worker. Name it `wax-coat-detailing-worker-v2`.
+1. Workers & Pages -> Create -> Worker. Name it `wax-coat-brea-v2-worker`.
    Paste `worker/worker.js`.
 2. Settings -> Variables -> D1 database bindings:
    - Variable name: `DB`
-   - D1 database: `detailing-bookings`
+   - D1 database: `detailing-bookings-4ocky8996`
 3. Settings -> Variables -> Secrets:
    - `STRIPE_SECRET_KEY` = your `sk_live_...` (or `sk_test_...`)
 4. Deploy. The Worker creates the shared `bookings` table with `IF NOT EXISTS`, so it's
