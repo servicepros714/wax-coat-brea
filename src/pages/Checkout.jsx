@@ -360,11 +360,6 @@ export default function Checkout() {
   return (
     <div className="book-page">
       <div className="container">
-        <div className="book-head fx">
-          <span className="eyebrow center">Almost There</span>
-          <h1>Checkout</h1>
-        </div>
-
         <button
           className="btn btn-ghost"
           onClick={() => navigate('/book')}
@@ -373,60 +368,45 @@ export default function Checkout() {
           <ChevronLeft size={18} /> Back to booking
         </button>
 
+        <div className="book-head fx">
+          <span className="eyebrow center">Secure Checkout</span>
+          <h1>Checkout</h1>
+        </div>
+
+        {!applied && (
+          <div className="prepay-banner fx">
+            <div className="prepay-badge">
+              ${PREPAY_DISCOUNT}
+              <span>off</span>
+            </div>
+            <div className="prepay-text">
+              <strong>Save ${PREPAY_DISCOUNT} by prepaying (optional)</strong>
+              <p>
+                Enter <b>{PREPAY_CODE}</b> coupon code — pre-payment is <b>completely optional</b>, but saves
+                you ${PREPAY_DISCOUNT} and skips checkout hassle after your service.
+              </p>
+            </div>
+          </div>
+        )}
+
         <div className="checkout-grid fx fx-d1">
-          {/* summary / price bar */}
-          <div className="summary-card">
-            <h3 className="step-title" style={{ fontSize: '1.15rem', marginBottom: 18 }}>
-              Order summary
-            </h3>
-
-            <div style={{ display: 'grid', gap: 10, marginBottom: 18 }}>
-              <div className="cd-row">
-                <span className="k">
-                  <CalendarDays size={16} /> When
-                </span>
-                <span className="val">
-                  {prettyDate(draft.date)} · {draft.time}
-                </span>
-              </div>
-              <div className="cd-row">
-                <span className="k">
-                  <Car size={16} /> Vehicle
-                </span>
-                <span className="val">{draft.vehicle}</span>
-              </div>
-              <div className="cd-row">
-                <span className="k">
-                  <MapPin size={16} /> Address
-                </span>
-                <span className="val">{draft.address}</span>
-              </div>
+                    {/* price bar */}
+          <div className="checkout-price-bar">
+            <span className="checkout-price-amount">${total}</span>
+            <div className="checkout-price-details">
+              <span>{serviceLabel}</span>
             </div>
+          </div>
 
-            <div className="sum-line">
-              <span>{draft.serviceName}</span>
-              <span className="v">${draft.basePrice}</span>
-            </div>
-            {draft.exterior && (
-              <div className="sum-line">
-                <span>Exterior Wash</span>
-                <span className="v">${draft.exteriorPrice}</span>
-              </div>
-            )}
-            {applied && (
-              <div className="sum-line discount">
-                <span>PREPAY discount</span>
-                <span className="v">−${PREPAY_DISCOUNT}</span>
-              </div>
-            )}
-
-            {/* coupon */}
+          {/* coupon */}
+          <div className="coupon-wrap">
+            <label className="stripe-label">Coupon Code (Optional)</label>
             {!applied ? (
               <div className="coupon-row">
                 <input
                   value={coupon}
                   onChange={(e) => setCoupon(e.target.value)}
-                  placeholder="Promo code"
+                  placeholder="e.g. PREPAY"
                   onKeyDown={(e) => e.key === 'Enter' && applyCoupon()}
                 />
                 <button className="btn btn-outline" onClick={applyCoupon}>
@@ -437,17 +417,6 @@ export default function Checkout() {
               <div className="coupon-applied">
                 <Check size={16} /> {PREPAY_CODE} — ${PREPAY_DISCOUNT} off applied
               </div>
-            )}
-
-            <div className="sum-total">
-              <span className="lbl">Total</span>
-              <span className="amt">${total}</span>
-            </div>
-            {!applied && (
-              <p style={{ fontSize: '0.82rem', color: 'var(--text-2)', marginTop: 8 }}>
-                Prepay with code <b style={{ color: 'var(--aqua-deep)' }}>{PREPAY_CODE}</b> and save $
-                {PREPAY_DISCOUNT}.
-              </p>
             )}
           </div>
 

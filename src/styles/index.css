@@ -1966,12 +1966,11 @@ ul {
 
 /* ================= CHECKOUT ================= */
 .checkout-grid {
-  max-width: 980px;
+  max-width: 640px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.3fr 0.9fr;
-  gap: 28px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
 }
 
 .pay-card,
@@ -1983,9 +1982,107 @@ ul {
   padding: 32px;
 }
 
-.summary-card {
-  position: sticky;
-  top: calc(var(--nav-h) + 20px);
+/* ===== PREPAY BANNER ===== */
+.prepay-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 20px;
+  background: rgba(0, 180, 240, 0.06);
+  border: 1px solid rgba(0, 180, 240, 0.25);
+  border-radius: var(--r-lg);
+  max-width: 640px;
+  margin: 0 auto 24px;
+  width: 100%;
+}
+
+.checkout-price-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 24px;
+  background: var(--white);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.checkout-price-amount {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.9rem;
+  color: var(--aqua-deep);
+  flex-shrink: 0;
+}
+
+.checkout-price-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.checkout-price-details > span:first-child {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.coupon-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stripe-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+
+.coupon-wrap .coupon-row {
+  margin: 0;
+}
+
+.prepay-badge {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r);
+  background: var(--grad-aqua);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+}
+
+.prepay-badge span {
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+}
+
+.prepay-text strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.prepay-text p {
+  font-size: 0.83rem;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+
+.prepay-text p b {
+  color: var(--aqua-ink);
 }
 
 .stripe-field {
@@ -2308,13 +2405,6 @@ ul {
   .ba-wrap {
     grid-template-columns: 1fr;
     gap: 30px;
-  }
-  .checkout-grid {
-    grid-template-columns: 1fr;
-  }
-  .summary-card {
-    position: static;
-    order: -1;
   }
 }
 

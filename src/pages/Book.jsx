@@ -452,16 +452,6 @@ export default function Book() {
                   placeholder="2021 Toyota RAV4 — Silver"
                 />
               </div>
-
-              <div className="field">
-                <label htmlFor="notes">Notes for our team (optional)</label>
-                <textarea
-                  id="notes"
-                  value={data.notes}
-                  onChange={(e) => set({ notes: e.target.value })}
-                  placeholder="Gate code, pet hair, specific stains, where to park…"
-                />
-              </div>
             </>
           )}
 
