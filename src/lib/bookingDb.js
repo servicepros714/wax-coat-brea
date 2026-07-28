@@ -30,10 +30,19 @@ async function jsonOrThrow(res) {
 
 // --- Availability: which 30-min slots are already taken on a date (source-scoped) ---
 export async function getBookedSlots(dateStr) {
-  const res = await fetch(url(`/api/slots?source=${encodeURIComponent(SOURCE)}&date=${encodeURIComponent(dateStr)}`))
-  const data = await jsonOrThrow(res)
-  // Worker returns { booked: ["09:00", "10:30", ...] }
-  return (data && data.booked) || []
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), 8000) // don't hang forever
+  try {
+    const res = await fetch(
+      url(`/api/slots?source=${encodeURIComponent(SOURCE)}&date=${encodeURIComponent(dateStr)}`),
+      { signal: controller.signal }
+    )
+    const data = await jsonOrThrow(res)
+    // Worker returns { booked: ["09:00", "10:30", ...] }
+    return (data && data.booked) || []
+  } finally {
+    clearTimeout(timeout)
+  }
 }
 
 // --- Create a booking row ---
