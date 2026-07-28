@@ -17,11 +17,7 @@ chrome-framed before/after slider).
 |---|---|
 | `source` tag | `wax-coat-brea` |
 | Booking ID prefix | `WCB-` |
-| Worker URL | `https://wax-coa-detailing-worker.austin80565.workers.dev` |
-
-> WORKER NAME CHECK: the brief said `wax-coa-detailing-worker` (missing the **t**).
-> If that was a typo for `wax-coat-detailing-worker`, deploy the Worker under the correct
-> name and update the single `VITE_API_URL` line in `.env.local`.
+| Worker URL | `https://wax-coat-detailing-worker-v2.austin80565.workers.dev` |
 
 ---
 
@@ -41,8 +37,8 @@ stored until the Worker is live.
 ## 2. Front-end env — `.env.local` (committed on purpose)
 
 ```
-VITE_API_URL=https://wax-coa-detailing-worker.austin80565.workers.dev
-VITE_STRIPE_PUBLISHABLE_KEY=pk_live_or_test_your_key
+VITE_API_URL=https://wax-coat-detailing-worker-v2.austin80565.workers.dev
+VITE_STRIPE_PUBLISHABLE_KEY=pk_test_or_pk_live_your_key
 ```
 
 The publishable key is safe to commit. Replacing the placeholder with a real `pk_...`
@@ -52,8 +48,8 @@ key switches checkout from demo mode to live Stripe (Card + Apple Pay / Google P
 
 ## 3. Deploy the Worker (Cloudflare dashboard — no CLI)
 
-1. Workers & Pages -> Create -> Worker. Name it `wax-coa-detailing-worker`
-   (or `wax-coat-detailing-worker` — see the note above). Paste `worker/worker.js`.
+1. Workers & Pages -> Create -> Worker. Name it `wax-coat-detailing-worker-v2`.
+   Paste `worker/worker.js`.
 2. Settings -> Variables -> D1 database bindings:
    - Variable name: `DB`
    - D1 database: `detailing-bookings`

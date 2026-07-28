@@ -6,9 +6,7 @@
  * scoped to this site's `source` tag so portfolio sites never collide.
  *
  * Dashboard setup (manual, no CLI):
- *   1. Create/deploy this Worker as:  wax-coa-detailing-worker
- *      (if that name was a typo, use wax-coat-detailing-worker and
- *       update VITE_API_URL in .env.local to match)
+ *   1. Create/deploy this Worker as:  wax-coat-detailing-worker-v2
  *   2. Settings → Variables → D1 database bindings:
  *        Variable name:  DB
  *        D1 database:    detailing-bookings
@@ -107,8 +105,17 @@ export default {
       return new Response(null, { headers: CORS })
     }
 
+    // Payment-intent creation doesn't touch D1, so it works even before the
+    // database binding is wired up — lets Stripe be tested standalone.
+    const needsDb = path !== '/api/create-payment-intent'
+
     try {
-      await ensureSchema(env.DB)
+      if (needsDb) {
+        if (!env.DB) {
+          return json({ error: 'Database not configured yet for this Worker.' }, 503)
+        }
+        await ensureSchema(env.DB)
+      }
 
       // ---- availability (source-scoped) ----
       if (path === '/api/slots' && request.method === 'GET') {

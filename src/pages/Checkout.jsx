@@ -26,6 +26,7 @@ import {
 } from 'lucide-react'
 import { SITE, PREPAY_DISCOUNT, PREPAY_CODE } from '../lib/site'
 import { createBooking, createPaymentIntent } from '../lib/bookingDb'
+import useReveal from '../lib/useReveal'
 
 const PK = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY
 const HAS_REAL_KEY = !!PK && PK.startsWith('pk_') && !PK.includes('REPLACE')
@@ -283,6 +284,8 @@ export default function Checkout() {
   const [coupon, setCoupon] = useState('')
   const [applied, setApplied] = useState(false)
   const [placing, setPlacing] = useState(false)
+
+  useReveal([draft])
 
   const serviceLabel = useMemo(
     () => (draft ? `${draft.serviceName}${draft.exterior ? ' + Exterior Wash' : ''}` : ''),
