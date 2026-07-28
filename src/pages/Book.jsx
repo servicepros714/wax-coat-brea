@@ -84,7 +84,7 @@ export default function Book() {
   const [loadingSlots, setLoadingSlots] = useState(false)
 
   useEffect(() => {
-    if (step !== 3 || !data.date) return
+    if (step !== 4 || !data.date) return
     let active = true
     setLoadingSlots(true)
     getBookedSlots(data.date)
