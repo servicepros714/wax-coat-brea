@@ -1146,6 +1146,16 @@ ul {
   flex-wrap: wrap;
 }
 
+.cta-band .btn-outline {
+  color: var(--chrome-hi);
+  border-color: rgba(203, 213, 221, 0.35);
+}
+
+.cta-band .btn-outline:hover {
+  border-color: var(--aqua-glow);
+  color: var(--aqua-glow);
+}
+
 /* ================= FOOTER ================= */
 .footer {
   background: var(--ink);
