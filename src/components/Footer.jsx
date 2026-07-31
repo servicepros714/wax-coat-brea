@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Phone, MapPin, Mail, Clock, Instagram, Facebook, Star } from 'lucide-react'
-import BrandMark from './BrandMark'
+import logo from '../assets/logo.png'
 import { SITE } from '../lib/site'
 
 export default function Footer() {
@@ -11,13 +11,11 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="footer-about">
             <span className="brand">
-              <BrandMark className="brand-mark" size={40} />
-              <span className="brand-text">
-                <span className="b1">
-                  Wax<span style={{ color: 'var(--aqua-glow)' }}>Coat</span>
-                </span>
-                <span className="b2">Detailing · Brea</span>
-              </span>
+              <img
+                src={logo}
+                alt="Wax Coat Car Detailing — Brea"
+                className="brand-mark brand-mark--lg"
+              />
             </span>
             <p>
               Interior and exterior auto detailing in Brea, CA. We bring the showroom shine to your

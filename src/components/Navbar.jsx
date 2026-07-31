@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X, Phone, ArrowRight } from 'lucide-react'
-import BrandMark from './BrandMark'
+import logo from '../assets/logo.png'
 import { SITE } from '../lib/site'
 
 const LINKS = [
@@ -51,13 +51,7 @@ export default function Navbar() {
       <div className={`nav-wrap ${scrolled ? 'scrolled' : ''}`}>
         <nav className="nav" aria-label="Primary">
           <Link to="/" className="brand" onClick={() => setOpen(false)}>
-            <BrandMark className="brand-mark" />
-            <span className="brand-text">
-              <span className="b1">
-                Wax<span>Coat</span>
-              </span>
-              <span className="b2">Detailing · Brea</span>
-            </span>
+            <img src={logo} alt="Wax Coat Car Detailing — Brea" className="brand-mark" />
           </Link>
 
           <div className="nav-links">
@@ -97,13 +91,7 @@ export default function Navbar() {
       <div className={`m-menu ${open ? 'open' : ''}`} aria-hidden={!open}>
         <div className="m-menu-top">
           <span className="brand">
-            <BrandMark className="brand-mark" />
-            <span className="brand-text">
-              <span className="b1">
-                Wax<span>Coat</span>
-              </span>
-              <span className="b2">Detailing · Brea</span>
-            </span>
+            <img src={logo} alt="Wax Coat Car Detailing — Brea" className="brand-mark" />
           </span>
           <button className="m-close" aria-label="Close menu" onClick={() => setOpen(false)}>
             <X size={22} />

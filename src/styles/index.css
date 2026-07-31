@@ -391,41 +391,18 @@ ul {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  font-family: var(--font-display);
-  font-weight: 800;
-  letter-spacing: -0.02em;
   line-height: 1;
 }
 
 .brand-mark {
-  width: 38px;
-  height: 38px;
+  height: 48px;
+  width: auto;
   flex: none;
+  display: block;
 }
 
-.brand-text {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
-
-.brand-text .b1 {
-  font-size: 1.02rem;
-  color: var(--text);
-}
-
-.brand-text .b1 span {
-  color: var(--aqua-deep);
-}
-
-.brand-text .b2 {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 0.56rem;
-  letter-spacing: 0.34em;
-  text-transform: uppercase;
-  color: var(--chrome-lo);
+.brand-mark--lg {
+  height: 66px;
 }
 
 .nav-links {
@@ -518,10 +495,6 @@ ul {
   margin-bottom: 40px;
 }
 
-.m-menu-top .brand-text .b1 {
-  color: var(--chrome-hi);
-}
-
 .m-close {
   width: 46px;
   height: 46px;
@@ -573,12 +546,27 @@ ul {
   padding-top: calc(var(--nav-h) + 56px);
   padding-bottom: 0;
   overflow: hidden;
-  background: radial-gradient(120% 90% at 12% 0%, #ffffff 0%, var(--paper) 42%, var(--paper-2) 100%);
+  background:
+    linear-gradient(
+      100deg,
+      rgba(242, 246, 250, 0.97) 0%,
+      rgba(242, 246, 250, 0.9) 34%,
+      rgba(242, 246, 250, 0.5) 64%,
+      rgba(242, 246, 250, 0.16) 100%
+    ),
+    radial-gradient(
+      120% 90% at 12% 0%,
+      rgba(255, 255, 255, 0.92) 0%,
+      rgba(242, 246, 250, 0.45) 42%,
+      transparent 100%
+    ),
+    url('/hero.jpg') center / cover no-repeat,
+    var(--paper-2);
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: 1fr;
   gap: 40px;
   align-items: center;
   min-height: 620px;
@@ -633,158 +621,6 @@ ul {
 }
 
 /* hero visual side */
-.hero-visual {
-  position: relative;
-  align-self: stretch;
-  min-height: 620px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-panel {
-  position: relative;
-  width: 100%;
-  max-width: 520px;
-  aspect-ratio: 4 / 5;
-  border-radius: var(--r-xl);
-  overflow: hidden;
-  background: var(--grad-ink);
-  box-shadow: var(--shadow-lg);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-}
-
-/* animated wet-gloss surface inside the hero panel */
-.hero-surface {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(60% 40% at 70% 22%, rgba(99, 214, 255, 0.55), transparent 60%),
-    radial-gradient(50% 45% at 25% 78%, rgba(0, 180, 240, 0.4), transparent 62%),
-    linear-gradient(160deg, #10202e 0%, #0a1420 60%, #060c14 100%);
-}
-
-.hero-shine {
-  position: absolute;
-  top: -20%;
-  left: -40%;
-  width: 60%;
-  height: 140%;
-  background: linear-gradient(
-    100deg,
-    transparent,
-    rgba(255, 255, 255, 0.28) 46%,
-    rgba(255, 255, 255, 0.5) 50%,
-    transparent 60%
-  );
-  transform: skewX(-14deg);
-  animation: shineSweep 5.5s ease-in-out infinite;
-  filter: blur(2px);
-}
-
-@keyframes shineSweep {
-  0%,
-  62% {
-    left: -50%;
-  }
-  86%,
-  100% {
-    left: 130%;
-  }
-}
-
-.hero-car {
-  position: absolute;
-  bottom: 12%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 88%;
-  filter: drop-shadow(0 24px 30px rgba(0, 0, 0, 0.55));
-}
-
-.hero-badge {
-  position: absolute;
-  bottom: 22px;
-  left: 22px;
-  right: 22px;
-  padding: 16px 18px;
-  border-radius: var(--r);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06));
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.hero-badge .stars {
-  color: var(--aqua-glow);
-  display: flex;
-  gap: 2px;
-}
-
-.hero-badge .stars svg {
-  width: 15px;
-  height: 15px;
-  fill: currentColor;
-}
-
-.hero-badge .txt {
-  color: var(--chrome-hi);
-  font-size: 0.86rem;
-  line-height: 1.35;
-}
-
-.hero-badge .txt b {
-  font-family: var(--font-display);
-}
-
-/* floating water beads */
-.bead {
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle at 32% 28%,
-    rgba(255, 255, 255, 0.95),
-    rgba(99, 214, 255, 0.7) 40%,
-    rgba(0, 136, 201, 0.35) 75%
-  );
-  box-shadow: 0 6px 14px rgba(0, 120, 180, 0.28), inset 0 -3px 6px rgba(0, 80, 120, 0.4);
-  pointer-events: none;
-}
-
-.hero .bead.b1 {
-  width: 26px;
-  height: 26px;
-  top: 14%;
-  right: 8%;
-  animation: floatY 6s ease-in-out infinite;
-}
-.hero .bead.b2 {
-  width: 16px;
-  height: 16px;
-  top: 62%;
-  right: 2%;
-  animation: floatY 7.5s ease-in-out 0.6s infinite;
-}
-.hero .bead.b3 {
-  width: 40px;
-  height: 40px;
-  bottom: 6%;
-  left: -18px;
-  animation: floatY 8s ease-in-out 1.2s infinite;
-}
-
-@keyframes floatY {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-14px);
-  }
-}
 
 /* wave divider under hero */
 .wave-divider {
@@ -1322,10 +1158,6 @@ ul {
   grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
   gap: 40px;
   padding-bottom: 52px;
-}
-
-.footer .brand-text .b1 {
-  color: var(--chrome-hi);
 }
 
 .footer-col h4 {
@@ -2383,12 +2215,19 @@ ul {
   .nav-cta .btn {
     display: none;
   }
+  .hero {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(242, 246, 250, 0.8) 0%,
+        rgba(242, 246, 250, 0.8) 46%,
+        rgba(242, 246, 250, 0.90) 100%
+      ),
+      url('/hero.jpg') center / cover no-repeat,
+      var(--paper-2);
+  }
   .hero-grid {
     grid-template-columns: 1fr;
-  }
-  .hero-visual {
-    min-height: 440px;
-    order: -1;
   }
   .hero-copy {
     padding-bottom: 40px;
@@ -2492,5 +2331,141 @@ ul {
   .fx {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* =========================================================================
+   RECENT WORK GALLERY — chrome frame + thumbnail switcher
+   ========================================================================= */
+.wg {
+  display: grid;
+  gap: 14px;
+}
+
+.wg-frame {
+  position: relative;
+  margin: 0;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--grad-chrome);
+  padding: 3px;
+  box-shadow: var(--shadow-lg);
+}
+
+.wg-inner {
+  position: relative;
+  border-radius: calc(var(--r-lg) - 4px);
+  overflow: hidden;
+  background: var(--ink-2);
+  aspect-ratio: 4 / 3;
+}
+
+.wg-inner > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes shineSweep {
+  0%,
+  62% {
+    left: -50%;
+  }
+  86%,
+  100% {
+    left: 130%;
+  }
+}
+
+/* signature: chrome shine sweeping across the glass */
+.wg-gloss {
+  position: absolute;
+  top: -20%;
+  left: -40%;
+  width: 55%;
+  height: 140%;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.24) 46%,
+    rgba(255, 255, 255, 0.44) 50%,
+    transparent 60%
+  );
+  transform: skewX(-14deg);
+  filter: blur(2px);
+  animation: shineSweep 5.5s ease-in-out infinite;
+}
+
+.wg-tag {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  padding: 7px 15px;
+  border-radius: var(--r-pill);
+  background: var(--grad-aqua);
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-aqua);
+}
+
+.wg-thumbs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.wg-thumb {
+  position: relative;
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  cursor: pointer;
+  background: var(--paper-2);
+  box-shadow: 0 0 0 1px var(--paper-line), var(--shadow-sm);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.wg-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.62;
+  transition: opacity 0.25s ease;
+}
+
+.wg-thumb:hover {
+  transform: translateY(-2px);
+}
+
+.wg-thumb:hover img {
+  opacity: 0.85;
+}
+
+.wg-thumb.is-active {
+  box-shadow: 0 0 0 2px var(--aqua), var(--shadow-aqua);
+}
+
+.wg-thumb.is-active img {
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .wg-thumbs {
+    gap: 9px;
+  }
+  .wg-tag {
+    left: 12px;
+    bottom: 12px;
+    font-size: 0.7rem;
+    padding: 6px 12px;
   }
 }

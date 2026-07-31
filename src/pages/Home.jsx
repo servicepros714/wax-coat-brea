@@ -13,7 +13,7 @@ import {
   Hand,
   Waves,
 } from 'lucide-react'
-import BeforeAfter from '../components/BeforeAfter'
+import WorkGallery from '../components/WorkGallery'
 import useReveal from '../lib/useReveal'
 import { SITE, SERVICES, EXTERIOR_ADDON } from '../lib/site'
 
@@ -39,42 +39,6 @@ function DropCheck() {
         strokeWidth="1.4"
         opacity="0.5"
       />
-    </svg>
-  )
-}
-
-function HeroCar() {
-  return (
-    <svg className="hero-car" viewBox="0 0 400 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs>
-        <linearGradient id="hc-body" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#F4F8FB" />
-          <stop offset="0.45" stopColor="#C8D3DB" />
-          <stop offset="0.56" stopColor="#8A99A6" />
-          <stop offset="1" stopColor="#E2E9EE" />
-        </linearGradient>
-        <linearGradient id="hc-glass" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#8DE2FF" />
-          <stop offset="1" stopColor="#0093D4" />
-        </linearGradient>
-      </defs>
-      <path
-        d="M22 96c3-6 10-9 20-10l24-30c6-8 15-12 25-12l86-2c16 0 31 6 43 17l20 18c17 2 30 6 39 13 6 5 8 12 6 20l-2 9c-1 5-5 8-11 8H30c-6 0-10-4-11-9l-2-11c-1-7 1-14 5-18Z"
-        fill="url(#hc-body)"
-      />
-      <path
-        d="M70 55c6-8 15-12 25-12l84-2c15 0 30 6 41 16l14 13-150 3-32 1 18-19Z"
-        fill="url(#hc-glass)"
-        opacity="0.92"
-      />
-      <path d="M96 44l73-2 4 32-96 2 19-32Z" fill="#0A121A" opacity="0.28" />
-      <circle cx="96" cy="118" r="20" fill="#0A121A" />
-      <circle cx="96" cy="118" r="20" stroke="url(#hc-body)" strokeWidth="6" />
-      <circle cx="96" cy="118" r="7" fill="#5FD8FF" opacity="0.55" />
-      <circle cx="288" cy="118" r="20" fill="#0A121A" />
-      <circle cx="288" cy="118" r="20" stroke="url(#hc-body)" strokeWidth="6" />
-      <circle cx="288" cy="118" r="7" fill="#5FD8FF" opacity="0.55" />
-      <path d="M250 60l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6Z" fill="#EAFBFF" />
     </svg>
   )
 }
@@ -128,29 +92,6 @@ export default function Home() {
                 <div className="trust-chip">
                   <span className="n">6+ mo</span>
                   <span className="l">Coat Protection</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="hero-visual fx fx-d2">
-              <span className="bead b1" />
-              <span className="bead b2" />
-              <span className="bead b3" />
-              <div className="hero-panel">
-                <div className="hero-surface" />
-                <div className="hero-shine" />
-                <HeroCar />
-                <div className="hero-badge">
-                  <span className="stars">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} />
-                    ))}
-                  </span>
-                  <span className="txt">
-                    <b>“Looked brand new.”</b>
-                    <br />
-                    Real reviews from Brea drivers
-                  </span>
                 </div>
               </div>
             </div>
@@ -288,11 +229,11 @@ export default function Home() {
             <div className="fx">
               <span className="eyebrow">See The Shine</span>
               <h2 className="h-xl" style={{ margin: '14px 0 18px' }}>
-                Drag to reveal the <span className="txt-aqua">wax coat</span>
+                Fresh out of the <span className="txt-aqua">wax coat</span>
               </h2>
               <p className="lead" style={{ marginBottom: 24 }}>
-                Same car, same lighting — one side detailed and coated, the other left as it came in.
-                Pull the handle across to compare.
+                Real cars off our own bay — no stock photos, no staging. Tap a thumbnail to
+                look through recent jobs.
               </p>
               <ul className="svc-list" style={{ marginBottom: 28 }}>
                 {[
@@ -310,19 +251,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="fx fx-d1">
-              <BeforeAfter />
-              <p
-                style={{
-                  textAlign: 'center',
-                  fontSize: '0.8rem',
-                  color: 'var(--text-2)',
-                  fontFamily: 'var(--font-mono)',
-                  letterSpacing: '0.08em',
-                  marginTop: 14,
-                }}
-              >
-                Swap in your own before/after photos in <code>Results</code>
-              </p>
+              <WorkGallery />
             </div>
           </div>
         </div>
